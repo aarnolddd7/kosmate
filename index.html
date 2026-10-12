@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KosMate — Kelola Kos, Lebih Mudah</title>
+  <link rel="icon" href="assets/logo.jpeg" />
+  <meta name="description" content="KosMate membantu pemilik kos mengelola data penghuni, tagihan otomatis, keluhan, dan laporan keuangan dalam satu sistem cloud yang rapi dan transparan." />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:  '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+
+<body class="bg-white font-sans text-slate-700 antialiased selection:bg-brand-600 selection:text-white">
+
+  <!-- ============================================================= -->
+  <!-- NAVBAR                                                        -->
+  <!-- ============================================================= -->
+  <header class="sticky top-0 z-50 border-b border-slate-100 bg-white/90 backdrop-blur">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center">
+        <img src="assets/logo.jpeg" alt="KosMate" class="h-9 w-auto sm:h-10" />
+      </a>
+
+      <!-- Desktop menu -->
+      <ul class="hidden items-center gap-8 text-sm font-semibold text-slate-600 lg:flex">
+        <li><a href="#masalah" class="transition hover:text-brand-600">Masalah</a></li>
+        <li><a href="#solusi" class="transition hover:text-brand-600">Solusi</a></li>
+        <li><a href="#fitur" class="transition hover:text-brand-600">Fitur</a></li>
+        <li><a href="#testimoni" class="transition hover:text-brand-600">Testimoni</a></li>
+        <li><a href="#harga" class="transition hover:text-brand-600">Harga</a></li>
+        <li><a href="#faq" class="transition hover:text-brand-600">FAQ</a></li>
+      </ul>
+
+      <div class="hidden lg:block">
+        <a href="https://wa.me/6281234567890?text=Halo%20KosMate%2C%20saya%20ingin%20coba%20demo%20gratis."
+           class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-600/30 transition hover:bg-brand-700">
+          Coba Demo Gratis
+        </a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button id="menuBtn" type="button" aria-label="Buka menu"
+              class="grid h-10 w-10 place-items-center rounded-lg border border-slate-200 text-slate-700 lg:hidden">
+        <svg id="iconOpen" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="iconClose" class="hidden h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden border-t border-slate-100 bg-white lg:hidden">
+      <ul class="space-y-1 px-4 py-4 text-sm font-semibold text-slate-700">
+        <li><a href="#masalah"   class="block rounded-lg px-4 py-3 hover:bg-brand-50 hover:text-brand-700">Masalah</a></li>
+        <li><a href="#solusi"    class="block rounded-lg px-4 py-3 hover:bg-brand-50 hover:text-brand-700">Solusi</a></li>
+        <li><a href="#fitur"     class="block rounded-lg px-4 py-3 hover:bg-brand-50 hover:text-brand-700">Fitur</a></li>
+        <li><a href="#testimoni" class="block rounded-lg px-4 py-3 hover:bg-brand-50 hover:text-brand-700">Testimoni</a></li>
+        <li><a href="#harga"     class="block rounded-lg px-4 py-3 hover:bg-brand-50 hover:text-brand-700">Harga</a></li>
+        <li><a href="#faq"       class="block rounded-lg px-4 py-3 hover:bg-brand-50 hover:text-brand-700">FAQ</a></li>
+        <li class="pt-2">
+          <a href="#kontak" class="block rounded-xl bg-brand-600 px-4 py-3 text-center font-bold text-white">Hubungi Kami</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================= -->
+    <!-- 1. HERO SECTION                                               -->
+    <!-- ============================================================= -->
+    <section id="hero" class="relative overflow-hidden bg-gradient-to-b from-brand-50 via-white to-white">
+      <!-- dekorasi -->
+      <div class="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand-200/50 blur-3xl"></div>
+      <div class="pointer-events-none absolute -right-24 top-32 h-80 w-80 rounded-full bg-brand-100 blur-3xl"></div>
+
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-8 lg:px-8 lg:py-24">
+        <!-- copy -->
+        <div class="text-center lg:text-left">
+          <span class="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-brand-700">
+            <span class="h-2 w-2 rounded-full bg-brand-600"></span>
+            Sistem Pengelolaan Kos Terpadu
+          </span>
+
+          <h1 class="mt-6 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl xl:text-6xl">
+            Kelola Kos Jadi Lebih Praktis,
+            <span class="text-brand-600">Bebas Catat Manual</span>
+            &amp; Bebas Pusing
+          </h1>
+
+          <p class="mx-auto mt-6 max-w-xl text-base text-slate-600 sm:text-lg lg:mx-0">
+            KosMate membantu Anda mengelola data penghuni, mengirim tagihan otomatis,
+            menangani keluhan, hingga menyusun laporan keuangan — semuanya dalam
+            <strong class="font-semibold text-slate-800">satu sistem terpadu</strong> yang rapi dan transparan.
+          </p>
+
+          <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+            <a href="#kontak"
+               class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-7 py-3.5 text-base font-bold text-white shadow-xl shadow-brand-600/30 transition hover:-translate-y-0.5 hover:bg-brand-700 sm:w-auto">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7"/></svg>
+              Coba Demo Gratis
+            </a>
+            <a href="https://wa.me/6281234567890?text=Halo%20KosMate%2C%20saya%20ingin%20berkonsultasi%20soal%20pengelolaan%20kos."
+               class="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-brand-600 bg-white px-7 py-3.5 text-base font-bold text-brand-700 transition hover:bg-brand-50 sm:w-auto">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.1c-.25.7-1.44 1.33-1.99 1.4-.51.07-1.15.1-1.86-.12-.43-.13-.98-.32-1.69-.62-2.98-1.29-4.92-4.29-5.07-4.49-.15-.2-1.21-1.61-1.21-3.07 0-1.46.76-2.18 1.03-2.48.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.52.25.6.85 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.36 1.45.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.12.07.72-.18 1.42z"/></svg>
+              Chat via WhatsApp
+            </a>
+          </div>
+
+          <p class="mt-5 text-sm text-slate-500">
+            ✦ Gratis pendampingan setup &nbsp;•&nbsp; Tanpa perlu instal aplikasi rumit
+          </p>
+        </div>
+
+        <!-- visual mockup dashboard -->
+        <div class="relative mx-auto w-full max-w-lg lg:max-w-none">
+          <!-- Laptop mockup -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl shadow-brand-900/10">
+            <div class="flex items-center gap-1.5 pb-2">
+              <span class="h-2.5 w-2.5 rounded-full bg-red-400"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-amber-400"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+              <span class="ml-3 h-5 flex-1 rounded bg-slate-100"></span>
+            </div>
+            <div class="rounded-xl bg-gradient-to-br from-brand-600 to-brand-800 p-5 text-white">
+              <p class="text-xs font-semibold uppercase tracking-widest text-brand-100">Dashboard KosMate</p>
+              <div class="mt-4 grid grid-cols-3 gap-3">
+                <div class="rounded-lg bg-white/15 p-3 backdrop-blur">
+                  <p class="text-2xl font-extrabold">24</p>
+                  <p class="text-[11px] text-brand-100">Kamar Terisi</p>
+                </div>
+                <div class="rounded-lg bg-white/15 p-3 backdrop-blur">
+                  <p class="text-2xl font-extrabold">98%</p>
+                  <p class="text-[11px] text-brand-100">Bayar Tepat Waktu</p>
+                </div>
+                <div class="rounded-lg bg-white/15 p-3 backdrop-blur">
+                  <p class="text-2xl font-extrabold">Rp12jt</p>
+                  <p class="text-[11px] text-brand-100">Pendapatan Bln Ini</p>
+                </div>
+              </div>
+              <div class="mt-4 space-y-2 rounded-lg bg-white p-4 text-slate-700">
+                <div class="flex items-center justify-between text-sm">
+                  <span class="font-semibold">Tagihan Listrik — Kamar A3</span>
+                  <span class="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-bold text-amber-700">Menunggu</span>
+                </div>
+                <div class="h-2 rounded-full bg-slate-100"><div class="h-2 w-3/4 rounded-full bg-brand-500"></div></div>
+                <div class="flex items-center justify-between text-sm">
+                  <span class="font-semibold">Sewa Bulan Ini — 20 Kamar</span>
+                  <span class="rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-bold text-emerald-700">Lunas</span>
+                </div>
+                <div class="h-2 rounded-full bg-slate-100"><div class="h-2 w-[92%] rounded-full bg-emerald-500"></div></div>
+              </div>
+            </div>
+            <div class="mt-3 h-2 w-40 mx-auto rounded-full bg-slate-200"></div>
+          </div>
+
+          <!-- Smartphone mockup -->
+          <div class="absolute -bottom-8 -right-2 w-40 rounded-3xl border-4 border-slate-900 bg-white p-2 shadow-2xl sm:w-48 lg:-right-6">
+            <div class="mx-auto mb-2 h-1.5 w-12 rounded-full bg-slate-300"></div>
+            <div class="rounded-2xl bg-brand-50 p-3">
+              <p class="text-[10px] font-bold uppercase tracking-wide text-brand-700">Notifikasi</p>
+              <div class="mt-2 space-y-2">
+                <div class="rounded-lg bg-white p-2 shadow-sm">
+                  <p class="text-[11px] font-semibold text-slate-800">Tagihan terkirim ✅</p>
+                  <p class="text-[10px] text-slate-500">20 penghuni · otomatis</p>
+                </div>
+                <div class="rounded-lg bg-white p-2 shadow-sm">
+                  <p class="text-[11px] font-semibold text-slate-800">Keluhan baru 🔧</p>
+                  <p class="text-[10px] text-slate-500">Kamar B2 · AC bocor</p>
+                </div>
+                <div class="rounded-lg bg-white p-2 shadow-sm">
+                  <p class="text-[11px] font-semibold text-slate-800">Pembayaran masuk 💰</p>
+                  <p class="text-[10px] text-slate-500">Rp1.500.000 · Kamar A1</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 2. PROBLEM SECTION                                            -->
+    <!-- ============================================================= -->
+    <section id="masalah" class="bg-white py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="text-sm font-bold uppercase tracking-widest text-brand-600">Masalahnya</span>
+          <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+            Kelola kos secara manual? Ini yang sering terjadi...
+          </h2>
+          <p class="mt-4 text-base text-slate-600 sm:text-lg">
+            Pemilik kos skala kecil–menengah, terutama di sekitar kampus, sering menghadapi
+            masalah operasional yang sama setiap bulannya.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- card 1 -->
+          <div class="group rounded-2xl border border-slate-100 bg-slate-50 p-6 transition hover:-translate-y-1 hover:border-brand-200 hover:bg-white hover:shadow-xl hover:shadow-brand-900/5">
+            <div class="grid h-12 w-12 place-items-center rounded-xl bg-red-100 text-red-600">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+            </div>
+            <h3 class="mt-4 text-lg font-bold text-slate-900">Catatan Manual Sering Hilang</h3>
+            <p class="mt-2 text-sm text-slate-600">Data sewa, utang, dan listrik tercatat di buku atau Excel yang rentan hilang, rusak, atau salah input.</p>
+          </div>
+          <!-- card 2 -->
+          <div class="group rounded-2xl border border-slate-100 bg-slate-50 p-6 transition hover:-translate-y-1 hover:border-brand-200 hover:bg-white hover:shadow-xl hover:shadow-brand-900/5">
+            <div class="grid h-12 w-12 place-items-center rounded-xl bg-amber-100 text-amber-600">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="mt-4 text-lg font-bold text-slate-900">Sering Lupa Menagih Sewa</h3>
+            <p class="mt-2 text-sm text-slate-600">Menagih manual satu per satu memakan waktu dan mudah terlewat, sehingga pemasukan jadi tidak stabil.</p>
+          </div>
+          <!-- card 3 -->
+          <div class="group rounded-2xl border border-slate-100 bg-slate-50 p-6 transition hover:-translate-y-1 hover:border-brand-200 hover:bg-white hover:shadow-xl hover:shadow-brand-900/5">
+            <div class="grid h-12 w-12 place-items-center rounded-xl bg-orange-100 text-orange-600">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5h2m-1 0v14m-3.5-2.5h7M9 9h6"/><path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a4 4 0 01-5.4 5.4L4 17v3h3l5.3-5.3z"/></svg>
+            </div>
+            <h3 class="mt-4 text-lg font-bold text-slate-900">Keluhan Penghuni Tercecer</h3>
+            <p class="mt-2 text-sm text-slate-600">Laporan kerusakan fasilitas disampaikan lewat chat/telpon dan mudah lupa ditindaklanjuti.</p>
+          </div>
+          <!-- card 4 -->
+          <div class="group rounded-2xl border border-slate-100 bg-slate-50 p-6 transition hover:-translate-y-1 hover:border-brand-200 hover:bg-white hover:shadow-xl hover:shadow-brand-900/5">
+            <div class="grid h-12 w-12 place-items-center rounded-xl bg-slate-200 text-slate-600">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-6m6 6V7M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            </div>
+            <h3 class="mt-4 text-lg font-bold text-slate-900">Riwayat Bayar Tidak Transparan</h3>
+            <p class="mt-2 text-sm text-slate-600">Penghuni maupun pemilik sulit menelusuri siapa sudah bayar dan berapa sisa tagihannya.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 3. SOLUTION / BENEFIT SECTION                                 -->
+    <!-- ============================================================= -->
+    <section id="solusi" class="bg-brand-600 py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="text-sm font-bold uppercase tracking-widest text-brand-200">Solusinya</span>
+          <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl">
+            KosMate Mengubah Semuanya Jadi Lebih Mudah
+          </h2>
+          <p class="mt-4 text-base text-brand-100 sm:text-lg">
+            Satu sistem untuk semua kebutuhan operasional kos Anda — dari penghuni hingga laporan keuangan.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-2">
+          <!-- benefit -->
+          <div class="flex gap-4 rounded-2xl bg-white/10 p-6 backdrop-blur transition hover:bg-white/20">
+            <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white text-brand-600">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">Otomatisasi &amp; Efisiensi — Hemat Waktu Hingga 80%</h3>
+              <p class="mt-2 text-sm text-brand-100">Tagihan dibuat dan dikirim otomatis ke penghuni. Anda tak perlu lagi mencatat dan menagih satu per satu.</p>
+            </div>
+          </div>
+          <!-- benefit -->
+          <div class="flex gap-4 rounded-2xl bg-white/10 p-6 backdrop-blur transition hover:bg-white/20">
+            <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white text-brand-600">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">Pencatatan Rapi &amp; Transparan</h3>
+              <p class="mt-2 text-sm text-brand-100">Semua transaksi tercatat digital, sehingga meminimalisir risiko keliru data dan sengketa di kemudian hari.</p>
+            </div>
+          </div>
+          <!-- benefit -->
+          <div class="flex gap-4 rounded-2xl bg-white/10 p-6 backdrop-blur transition hover:bg-white/20">
+            <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white text-brand-600">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317a1.724 1.724 0 013.35 0l.23.955a1.7 1.7 0 002.58.977l.82-.52a1.724 1.724 0 012.37 2.37l-.52.82a1.7 1.7 0 00.977 2.58l.955.23a1.724 1.724 0 010 3.35l-.955.23a1.7 1.7 0 00-.977 2.58l.52.82a1.724 1.724 0 01-2.37 2.37l-.82-.52a1.7 1.7 0 00-2.58.977l-.23.955a1.724 1.724 0 01-3.35 0l-.23-.955a1.7 1.7 0 00-2.58-.977l-.82.52a1.724 1.724 0 01-2.37-2.37l.52-.82a1.7 1.7 0 00-.977-2.58l-.955-.23a1.724 1.724 0 010-3.35l.955-.23a1.7 1.7 0 00.977-2.58l-.52-.82a1.724 1.724 0 012.37-2.37l.82.52a1.7 1.7 0 002.58-.977z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 15a3 3 0 100-6 3 3 0 000 6z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">Keluhan Terorganisir</h3>
+              <p class="mt-2 text-sm text-brand-100">Laporan kerusakan tercatat dan diteruskan ke teknisi. Penanganan maintenance jadi lebih teratur dan tidak terlewat.</p>
+            </div>
+          </div>
+          <!-- benefit -->
+          <div class="flex gap-4 rounded-2xl bg-white/10 p-6 backdrop-blur transition hover:bg-white/20">
+            <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white text-brand-600">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h10a4 4 0 001.22-7.81A6 6 0 007.6 8.6 4 4 0 003 12.5V15z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">Akses Cloud Kapan Saja</h3>
+              <p class="mt-2 text-sm text-brand-100">Pantau kondisi kos dan keuangan secara real-time dari mana saja, baik lewat laptop maupun smartphone.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 4. PRODUCT / FEATURES SECTION                                 -->
+    <!-- ============================================================= -->
+    <section id="fitur" class="bg-white py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="text-sm font-bold uppercase tracking-widest text-brand-600">Fitur Produk</span>
+          <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+            Semua yang Anda Butuhkan untuk Kelola Kos
+          </h2>
+          <p class="mt-4 text-base text-slate-600 sm:text-lg">
+            Fitur utama KosMate dirancang praktis, lengkap, dan mudah dipakai — bahkan untuk pengguna awam.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- fitur 1 -->
+          <div class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-900/5">
+            <div class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.63a4 4 0 10-4 0m8 0a3 3 0 10-2 0"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <p class="mt-4 text-xs font-bold uppercase tracking-widest text-brand-500">Fitur 01</p>
+            <h3 class="mt-1 text-lg font-bold text-slate-900">Manajemen Data Penghuni</h3>
+            <p class="mt-2 text-sm text-slate-600">Simpan dan kelola database penghuni kos dengan aman — lengkap dengan kontak, riwayat sewa, dan status kamar.</p>
+          </div>
+          <!-- fitur 2 -->
+          <div class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-900/5">
+            <div class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2a2 2 0 01-.6 1.4L4 17h11zm0 0a3 3 0 01-6 0"/></svg>
+            </div>
+            <p class="mt-4 text-xs font-bold uppercase tracking-widest text-brand-500">Fitur 02</p>
+            <h3 class="mt-1 text-lg font-bold text-slate-900">Pengelolaan &amp; Notifikasi Pembayaran</h3>
+            <p class="mt-2 text-sm text-slate-600">Tagihan otomatis tiap bulan dan transparansi riwayat pembayaran untuk penghuni maupun pemilik kos.</p>
+          </div>
+          <!-- fitur 3 -->
+          <div class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-900/5">
+            <div class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a4 4 0 01-5.4 5.4L4 17v3h3l5.3-5.3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3l3 3"/></svg>
+            </div>
+            <p class="mt-4 text-xs font-bold uppercase tracking-widest text-brand-500">Fitur 03</p>
+            <h3 class="mt-1 text-lg font-bold text-slate-900">Pusat Keluhan &amp; Maintenance</h3>
+            <p class="mt-2 text-sm text-slate-600">Kelola laporan perbaikan fasilitas dan koordinasi dengan teknisi dalam satu tempat yang terorganisir.</p>
+          </div>
+          <!-- fitur 4 -->
+          <div class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-900/5">
+            <div class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h10a4 4 0 001.22-7.81A6 6 0 007.6 8.6 4 4 0 003 12.5V15z"/></svg>
+            </div>
+            <p class="mt-4 text-xs font-bold uppercase tracking-widest text-brand-500">Fitur 04</p>
+            <h3 class="mt-1 text-lg font-bold text-slate-900">Website &amp; Aplikasi Terpadu</h3>
+            <p class="mt-2 text-sm text-slate-600">Sistem berbasis cloud yang mudah diakses kapan saja dari laptop maupun smartphone, tanpa ribet instalasi.</p>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <a href="#kontak" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-7 py-3.5 text-base font-bold text-white shadow-xl shadow-brand-600/30 transition hover:-translate-y-0.5 hover:bg-brand-700">
+            Lihat Semua Fitur Lewat Demo
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 5. SOCIAL PROOF SECTION                                       -->
+    <!-- ============================================================= -->
+    <section id="testimoni" class="bg-slate-50 py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="text-sm font-bold uppercase tracking-widest text-brand-600">Bukti Sosial</span>
+          <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+            Dipercaya Pemilik Kos di Sekitar Kampus
+          </h2>
+        </div>
+
+        <!-- statistik -->
+        <div class="mt-12 grid gap-6 sm:grid-cols-3">
+          <div class="rounded-2xl bg-white p-8 text-center shadow-sm">
+            <p class="text-4xl font-extrabold text-brand-600 sm:text-5xl">100+</p>
+            <p class="mt-2 text-sm font-semibold text-slate-600">Pemilik Kos Pengguna KosMate</p>
+          </div>
+          <div class="rounded-2xl bg-white p-8 text-center shadow-sm">
+            <p class="text-4xl font-extrabold text-brand-600 sm:text-5xl">80%</p>
+            <p class="mt-2 text-sm font-semibold text-slate-600">Waktu Pengelolaan Lebih Hemat</p>
+          </div>
+          <div class="rounded-2xl bg-white p-8 text-center shadow-sm">
+            <p class="text-4xl font-extrabold text-brand-600 sm:text-5xl">5.000+</p>
+            <p class="mt-2 text-sm font-semibold text-slate-600">Tagihan Terkirim Otomatis</p>
+          </div>
+        </div>
+
+        <!-- testimoni -->
+        <div class="mt-12 grid gap-6 lg:grid-cols-3">
+          <!-- testimoni 1 -->
+          <figure class="flex h-full flex-col rounded-2xl bg-white p-6 shadow-sm">
+            <div class="flex gap-0.5 text-amber-400" aria-label="5 dari 5 bintang">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            </div>
+            <blockquote class="mt-4 flex-1 text-sm text-slate-600">
+              "Dulu saya catat semua di buku dan sering lupa siapa yang belum bayar. Sekarang tagihan terkirim otomatis, pemasukan jadi jauh lebih tertib."
+            </blockquote>
+            <figcaption class="mt-5 flex items-center gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-full bg-brand-600 font-bold text-white">BS</span>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Bu Sri</p>
+                <p class="text-xs text-slate-500">Pemilik Kos 20 Kamar · Jogja</p>
+              </div>
+            </figcaption>
+          </figure>
+          <!-- testimoni 2 -->
+          <figure class="flex h-full flex-col rounded-2xl bg-white p-6 shadow-sm">
+            <div class="flex gap-0.5 text-amber-400" aria-label="5 dari 5 bintang">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            </div>
+            <blockquote class="mt-4 flex-1 text-sm text-slate-600">
+              "Fitur keluhan sangat membantu. Anak kos saya lapor AC rusak, langsung tercatat dan diteruskan ke teknisi tanpa saya harus ingat-ingat lagi."
+            </blockquote>
+            <figcaption class="mt-5 flex items-center gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-full bg-brand-600 font-bold text-white">RA</span>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Pak Rian</p>
+                <p class="text-xs text-slate-500">Pemilik Kos 35 Kamar · Bandung</p>
+              </div>
+            </figcaption>
+          </figure>
+          <!-- testimoni 3 -->
+          <figure class="flex h-full flex-col rounded-2xl bg-white p-6 shadow-sm">
+            <div class="flex gap-0.5 text-amber-400" aria-label="5 dari 5 bintang">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            </div>
+            <blockquote class="mt-4 flex-1 text-sm text-slate-600">
+              "Saya tinggal di luar kota, jadi pantau kos dari HP saja. Laporan keuangan real-time bikin saya tenang dan tidak perlu bolak-balik ke lokasi."
+            </blockquote>
+            <figcaption class="mt-5 flex items-center gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-full bg-brand-600 font-bold text-white">DM</span>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Bu Dewi</p>
+                <p class="text-xs text-slate-500">Pemilik Kos 12 Kamar · Surabaya</p>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 6. OFFER / PRICING SECTION                                    -->
+    <!-- ============================================================= -->
+    <section id="harga" class="bg-white py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="text-sm font-bold uppercase tracking-widest text-brand-600">Penawaran</span>
+          <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+            Investasi Sekali, Kelola Kos Sepenuhnya
+          </h2>
+          <p class="mt-4 text-base text-slate-600 sm:text-lg">
+            Pilih paket sesuai kebutuhan. Semua paket sudah termasuk pendampingan setup oleh tim KosMate.
+          </p>
+        </div>
+
+        <!-- paket utama -->
+        <div class="mx-auto mt-12 grid max-w-5xl gap-6 lg:grid-cols-2">
+          <!-- Paket Utama -->
+          <div class="relative overflow-hidden rounded-3xl border-2 border-brand-600 bg-white p-8 shadow-2xl shadow-brand-900/10">
+            <span class="absolute right-6 top-6 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-700">PALING POPULER</span>
+            <h3 class="text-xl font-extrabold text-slate-900">Akses Sistem KosMate</h3>
+            <p class="mt-2 text-sm text-slate-600">Pembelian satu kali (one-time purchase) untuk fitur lengkap operasional kos.</p>
+            <div class="mt-6 flex items-end gap-2">
+              <p class="text-4xl font-extrabold text-slate-900">Rp2.500.000</p>
+              <span class="pb-1 text-sm text-slate-500">/ sekali bayar</span>
+            </div>
+            <p class="mt-1 text-sm text-slate-500 line-through">Rp3.500.000</p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-700">
+              <li class="flex gap-2"><span class="text-brand-600">✔</span> Manajemen data penghuni tanpa batas</li>
+              <li class="flex gap-2"><span class="text-brand-600">✔</span> Tagihan otomatis &amp; notifikasi pembayaran</li>
+              <li class="flex gap-2"><span class="text-brand-600">✔</span> Pusat keluhan &amp; maintenance fasilitas</li>
+              <li class="flex gap-2"><span class="text-brand-600">✔</span> Laporan keuangan &amp; akses cloud real-time</li>
+              <li class="flex gap-2"><span class="text-brand-600">✔</span> Gratis pendampingan setup sistem</li>
+            </ul>
+            <a href="#kontak" class="mt-8 block rounded-xl bg-brand-600 px-6 py-3.5 text-center text-base font-bold text-white shadow-lg shadow-brand-600/30 transition hover:bg-brand-700">
+              Ambil Penawaran Ini
+            </a>
+          </div>
+
+          <!-- Add-ons -->
+          <div class="rounded-3xl border border-slate-200 bg-slate-50 p-8">
+            <h3 class="text-xl font-extrabold text-slate-900">Layanan &amp; Fitur Tambahan</h3>
+            <p class="mt-2 text-sm text-slate-600">Tingkatkan sistem sesuai kebutuhan spesifik kos Anda.</p>
+            <div class="mt-6 space-y-4">
+              <div class="flex items-start justify-between gap-4 rounded-xl bg-white p-4 shadow-sm">
+                <div>
+                  <p class="font-bold text-slate-900">Integrasi Payment Gateway</p>
+                  <p class="text-xs text-slate-500">Pembayaran otomatis via transfer/QRIS &amp; auto-konfirmasi.</p>
+                </div>
+                <p class="shrink-0 text-sm font-bold text-brand-600">+Rp750rb</p>
+              </div>
+              <div class="flex items-start justify-between gap-4 rounded-xl bg-white p-4 shadow-sm">
+                <div>
+                  <p class="font-bold text-slate-900">Kustomisasi Fitur</p>
+                  <p class="text-xs text-slate-500">Menyesuaikan sistem dengan aturan &amp; alur kos Anda.</p>
+                </div>
+                <p class="shrink-0 text-sm font-bold text-brand-600">Mulai Rp1jt</p>
+              </div>
+              <div class="flex items-start justify-between gap-4 rounded-xl bg-white p-4 shadow-sm">
+                <div>
+                  <p class="font-bold text-slate-900">Dukungan Teknis Prioritas</p>
+                  <p class="text-xs text-slate-500">Respon cepat &amp; bantuan langsung dari tim support.</p>
+                </div>
+                <p class="shrink-0 text-sm font-bold text-brand-600">+Rp500rb/th</p>
+              </div>
+            </div>
+            <a href="#kontak" class="mt-8 block rounded-xl border-2 border-brand-600 bg-white px-6 py-3.5 text-center text-base font-bold text-brand-700 transition hover:bg-brand-50">
+              Konsultasi Kebutuhan Custom
+            </a>
+          </div>
+        </div>
+
+        <!-- promo -->
+        <div class="mx-auto mt-8 max-w-5xl rounded-2xl bg-gradient-to-r from-brand-600 to-brand-800 p-6 text-center text-white shadow-xl shadow-brand-900/20 sm:p-8">
+          <p class="text-lg font-extrabold sm:text-xl">
+            🎉 Promo Terbatas: Diskon Pembelian Pertama + Gratis Pendampingan Setup Sistem!
+          </p>
+          <p class="mt-2 text-sm text-brand-100">
+            Kuota terbatas untuk pemilik kos baru. Amankan penawaran Anda sebelum promo berakhir.
+          </p>
+          <a href="https://wa.me/6281234567890?text=Halo%20KosMate%2C%20saya%20mau%20ambil%20promo%20diskon%20pembelian%20pertama."
+             class="mt-5 inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3 text-base font-bold text-brand-700 transition hover:-translate-y-0.5">
+            Klaim Promo Sekarang
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 7. FAQ SECTION                                                -->
+    <!-- ============================================================= -->
+    <section id="faq" class="bg-slate-50 py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <span class="text-sm font-bold uppercase tracking-widest text-brand-600">FAQ</span>
+          <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+            Pertanyaan yang Sering Diajukan
+          </h2>
+        </div>
+
+        <div class="mt-10 space-y-3">
+          <!-- FAQ item -->
+          <details class="group rounded-2xl border border-slate-200 bg-white p-5 open:shadow-lg open:shadow-brand-900/5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-slate-900">
+              Apakah KosMate rumit digunakan untuk orang awam?
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-sm text-slate-600">
+              Tidak. KosMate dirancang sederhana dan intuitif, cocok bahkan untuk pengguna yang belum terbiasa dengan aplikasi.
+              Kami juga memberikan pendampingan setup gratis hingga Anda siap memakainya sendiri.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl border border-slate-200 bg-white p-5 open:shadow-lg open:shadow-brand-900/5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-slate-900">
+              Bagaimana jika saya butuh fitur khusus untuk kos saya?
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-sm text-slate-600">
+              Kami menyediakan layanan kustomisasi. Sampaikan kebutuhan Anda, dan tim kami akan menyesuaikan sistem
+              KosMate dengan aturan serta alur pengelolaan kos Anda.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl border border-slate-200 bg-white p-5 open:shadow-lg open:shadow-brand-900/5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-slate-900">
+              Apakah data penghuni saya aman di server KosMate?
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-sm text-slate-600">
+              Ya. Kami menggunakan sistem berbasis cloud dengan enkripsi dan hak akses berlapis, sehingga hanya pihak
+              yang berwenang yang dapat membuka data penghuni Anda.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl border border-slate-200 bg-white p-5 open:shadow-lg open:shadow-brand-900/5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-slate-900">
+              Bagaimana sistem layanannya setelah pembelian?
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-sm text-slate-600">
+              Anda tetap mendapatkan dukungan teknis. Tersedia paket Dukungan Teknis Prioritas bagi yang ingin respon
+              lebih cepat, serta pembaruan sistem secara berkala.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl border border-slate-200 bg-white p-5 open:shadow-lg open:shadow-brand-900/5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-slate-900">
+              Apakah pembayarannya sekali saja atau ada biaya bulanan?
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-sm text-slate-600">
+              Akses utama KosMate dibeli satu kali (one-time purchase) untuk fitur lengkap operasional kos.
+              Layanan tambahan seperti payment gateway atau dukungan prioritas bersifat opsional sesuai kebutuhan Anda.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 8. FINAL CTA & KONTAK AKTIF                                   -->
+    <!-- ============================================================= -->
+    <section id="kontak" class="bg-white py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <!-- headline penutup -->
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+            Siap Kelola Kos Tanpa Pusing?
+          </h2>
+          <p class="mt-4 text-base text-slate-600 sm:text-lg">
+            Mulai sekarang. Tim KosMate siap membantu Anda mencoba sistem dan menyesuaikannya dengan kebutuhan kos Anda.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-8 lg:grid-cols-5">
+          <!-- kontak aktif -->
+          <div class="space-y-5 lg:col-span-2">
+            <a href="https://wa.me/6281234567890?text=Halo%20KosMate%2C%20saya%20ingin%20bertanya%20soal%20pengelolaan%20kos."
+               class="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-lg">
+              <span class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-emerald-100 text-emerald-600">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.1c-.25.7-1.44 1.33-1.99 1.4-.51.07-1.15.1-1.86-.12-.43-.13-.98-.32-1.69-.62-2.98-1.29-4.92-4.29-5.07-4.49-.15-.2-1.21-1.61-1.21-3.07 0-1.46.76-2.18 1.03-2.48.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.52.25.6.85 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.36 1.45.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.12.07.72-.18 1.42z"/></svg>
+              </span>
+              <div>
+                <p class="font-bold text-slate-900">WhatsApp Business</p>
+                <p class="text-sm text-slate-500">Respon cepat · Senin–Sabtu 08.00–20.00</p>
+              </div>
+            </a>
+
+            <a href="mailto:Kosmate2026@gmail.com"
+               class="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-lg">
+              <span class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-100 text-brand-600">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </span>
+              <div>
+                <p class="font-bold text-slate-900">Email Support</p>
+                <p class="text-sm text-slate-500">Kosmate2026@gmail.com</p>
+              </div>
+            </a>
+
+            <div class="rounded-2xl bg-brand-50 p-5">
+              <p class="text-sm font-semibold text-slate-800">Butuh demo langsung?</p>
+              <p class="mt-1 text-sm text-slate-600">Kami akan memandu Anda mencoba sistem KosMate secara gratis.</p>
+              <a href="https://wa.me/6281234567890?text=Halo%20KosMate%2C%20saya%20ingin%20jadwal%20demo%20gratis."
+                 class="mt-3 inline-flex items-center gap-2 text-sm font-bold text-brand-700 hover:text-brand-800">
+                Chat via WhatsApp →
+              </a>
+            </div>
+          </div>
+
+          <!-- formulir kontak responsif -->
+          <div class="lg:col-span-3">
+            <form id="contactForm" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-brand-900/5 sm:p-8">
+              <h3 class="text-lg font-extrabold text-slate-900">Ajukan Pertanyaan / Minta Demo</h3>
+              <p class="mt-1 text-sm text-slate-500">Isi data di bawah, kami akan menghubungi Anda melalui WhatsApp.</p>
+
+              <div class="mt-6 grid gap-5 sm:grid-cols-2">
+                <div class="sm:col-span-2">
+                  <label for="nama" class="mb-1.5 block text-sm font-semibold text-slate-700">Nama Lengkap</label>
+                  <input id="nama" name="nama" type="text" required placeholder="Contoh: Budi Santoso"
+                         class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30" />
+                </div>
+
+                <div>
+                  <label for="wa" class="mb-1.5 block text-sm font-semibold text-slate-700">Nomor WhatsApp</label>
+                  <input id="wa" name="wa" type="tel" required placeholder="08xxxxxxxxxx"
+                         class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30" />
+                </div>
+
+                <div>
+                  <label for="kamar" class="mb-1.5 block text-sm font-semibold text-slate-700">Jumlah Kamar Kos</label>
+                  <input id="kamar" name="kamar" type="number" min="1" required placeholder="Contoh: 15"
+                         class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30" />
+                </div>
+
+                <div class="sm:col-span-2">
+                  <label for="pesan" class="mb-1.5 block text-sm font-semibold text-slate-700">Pesan</label>
+                  <textarea id="pesan" name="pesan" rows="4" required placeholder="Tuliskan pertanyaan atau kebutuhan Anda..."
+                            class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30"></textarea>
+                </div>
+              </div>
+
+              <button type="submit"
+                      class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-brand-600/30 transition hover:bg-brand-700">
+                Kirim via WhatsApp
+              </button>
+              <p id="formStatus" class="mt-3 hidden rounded-lg bg-emerald-50 px-4 py-3 text-center text-sm font-semibold text-emerald-700"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================= -->
+  <!-- FOOTER                                                        -->
+  <!-- ============================================================= -->
+  <footer class="bg-slate-900 py-12 text-slate-400">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 md:grid-cols-3">
+        <div>
+          <a href="#hero" class="inline-flex rounded-xl bg-white px-3 py-2">
+            <img src="assets/logo.jpeg" alt="KosMate" class="h-9 w-auto sm:h-10" />
+          </a>
+          <p class="mt-4 max-w-xs text-sm">Kelola Kos, Lebih Mudah. Sistem pengelolaan kos terpadu untuk pemilik kos di seluruh Indonesia.</p>
+        </div>
+
+        <div>
+          <p class="text-sm font-bold uppercase tracking-widest text-white">Navigasi</p>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a href="#masalah" class="transition hover:text-white">Masalah</a></li>
+            <li><a href="#solusi" class="transition hover:text-white">Solusi</a></li>
+            <li><a href="#fitur" class="transition hover:text-white">Fitur</a></li>
+            <li><a href="#harga" class="transition hover:text-white">Harga</a></li>
+            <li><a href="#faq" class="transition hover:text-white">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-sm font-bold uppercase tracking-widest text-white">Ikuti Kami</p>
+          <div class="mt-4 flex gap-3">
+            <a href="https://instagram.com/kosmate.id" target="_blank" rel="noopener" aria-label="Instagram"
+               class="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-white transition hover:bg-brand-600">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.37 1.06.42 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.17-1.06.37-2.23.42-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.42a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.17-.42-.37-1.06-.42-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.42-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.06-.37 2.23-.42C8.42 2.17 8.8 2.16 12 2.16zm0 3.24A6.6 6.6 0 1018.6 12 6.6 6.6 0 0012 5.4zm0 10.9A4.3 4.3 0 1116.3 12 4.3 4.3 0 0112 16.3zm6.9-11.1a1.54 1.54 0 11-1.54-1.54 1.54 1.54 0 011.54 1.54z"/></svg>
+            </a>
+            <a href="https://tiktok.com/@kosmate.id" target="_blank" rel="noopener" aria-label="TikTok"
+               class="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-white transition hover:bg-brand-600">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0115.3 3h-3.2v12.4a2.6 2.6 0 11-1.85-2.5V9.6a5.8 5.8 0 105.35 5.77V9.01a7.4 7.4 0 004.4 1.44V7.24a4.3 4.3 0 01-3.4-1.42z"/></svg>
+            </a>
+          </div>
+          <p class="mt-4 text-sm">Kosmate2026@gmail.com<br />+62 812-3456-7890</p>
+        </div>
+      </div>
+
+      <div class="mt-10 border-t border-white/10 pt-6 text-center text-xs text-slate-500">
+        &copy; <span id="year"></span> KosMate. Seluruh hak cipta dilindungi.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tombol WhatsApp melayang -->
+  <a href="https://wa.me/6281234567890?text=Halo%20KosMate%2C%20saya%20ingin%20bertanya."
+     aria-label="Chat WhatsApp"
+     class="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-emerald-500 text-white shadow-2xl shadow-emerald-500/40 transition hover:scale-110 hover:bg-emerald-600">
+    <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.1c-.25.7-1.44 1.33-1.99 1.4-.51.07-1.15.1-1.86-.12-.43-.13-.98-.32-1.69-.62-2.98-1.29-4.92-4.29-5.07-4.49-.15-.2-1.21-1.61-1.21-3.07 0-1.46.76-2.18 1.03-2.48.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.52.25.6.85 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.36 1.45.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.12.07.72-.18 1.42z"/></svg>
+  </a>
+
+  <!-- ============================================================= -->
+  <!-- JAVASCRIPT                                                    -->
+  <!-- ============================================================= -->
+  <script>
+    // Tahun otomatis di footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Toggle menu mobile
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const iconOpen = document.getElementById('iconOpen');
+    const iconClose = document.getElementById('iconClose');
+
+    function toggleMenu(force) {
+      const isOpen = typeof force === 'boolean' ? force : mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', !isOpen);
+      iconOpen.classList.toggle('hidden', isOpen);
+      iconClose.classList.toggle('hidden', !isOpen);
+    }
+    menuBtn.addEventListener('click', () => toggleMenu());
+    mobileMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => toggleMenu(false)));
+
+    // Nomor WhatsApp tujuan (ganti sesuai nomor bisnis Anda)
+    const WA_NUMBER = '6281234567890';
+
+    // Form kontak -> kirim ke WhatsApp
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nama = form.nama.value.trim();
+      const wa = form.wa.value.trim();
+      const kamar = form.kamar.value.trim();
+      const pesan = form.pesan.value.trim();
+
+      const text =
+        '*Pesan Baru dari Website KosMate*%0A' +
+        'Nama: ' + encodeURIComponent(nama) + '%0A' +
+        'No. WhatsApp: ' + encodeURIComponent(wa) + '%0A' +
+        'Jumlah Kamar: ' + encodeURIComponent(kamar) + '%0A' +
+        'Pesan: ' + encodeURIComponent(pesan);
+
+      window.open('https://wa.me/' + WA_NUMBER + '?text=' + text, '_blank');
+
+      status.textContent = 'Terima kasih, ' + nama + '! Kami akan menghubungi Anda via WhatsApp.';
+      status.classList.remove('hidden');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
